@@ -1,0 +1,90 @@
+The program would give the following output when executed
+
+false
+2.		xyz == aString: true
+"xyz == new String(xyz)
+		  false
+1 in method
+		literal= aNewString
+		true
+2 in method
+		literal= aNewString
+		false
+3 in method
+		literal= aNewString
+		true
+4 in method
+		literal= aNewString
+		true
+5 in method
+		literal= aNewString
+		false
+6 in method
+		literal= aNewString
+		true
+7 in method
+		literal=aNewString
+		true
+
+false
+Explanation:
+The code contains the following
+System.out.println("1.  xyz == aString: " +     "xyz" == aString   ); 
+Here, the Strings are concatenated first and the result is compared with aString i.e. "xyz" to give the above boolean output, false.
+
+2.		xyz == aString: true
+Explanation:
+The code contains the following
+System.out.println("2.  xyz == aString: " +   ( "xyz" == aString ) );
+Due to the presence of the parentheses, the comparison between "xyz" and aString takes precedence over the concatenation thereby giving the above output.
+
+"xyz == new String(xyz)
+		  false
+Explanation:
+The code contains the following
+System.out.println("xyz == new String(xyz)\n    " + ("xyz" == newString) );
+Here, "xyz" is compared with the new object called newString. These point to different memory locations thereby giving the boolean output false.
+
+1 in method
+		literal= aNewString
+		true
+Explanation:
+Here, the String objects being compared point to the same memory location hence the above boolean output.
+
+2 in method
+		literal= aNewString
+		false
+Explanation:
+Here, "xyz" is compared with a new object String "xyz". These point to different memory locations thus giving the boolean output false. 
+
+3 in method
+		literal= aNewString
+		true
+Explanation:
+Here, literal "xyz" is compared to the concatenated result of "xy" + "z" i.e. "xyz" which point to the same memory location. Hence the above boolean output.
+
+4 in method
+		literal= aNewString
+		true
+Explanation:
+Here, concatenated result of "x" + "y" + "z" i.e. "xyz" is compared to the literal "xyz" which point to the same memory location. Hence the above boolean output.
+
+5 in method
+		literal= aNewString
+		false
+Explanation:
+Due to the creation of new object String "z", the concatenated result and the literal "xyz" do not point to the same location in memory. Hence the boolean output false.
+
+6 in method
+		literal= aNewString
+		true
+Explanation:
+Despite the presence of precedence, the concatenated result would be "xyz". This again points to the memory location of literal "xyz" hence the boolean output true.
+
+7 in method
+		literal=aNewString
+		true
+Explanation:
+Here, the concatenation in parentheses is done first and the character value 'x' is converted to String type object to give "xyz". This again points to the memory location of literal "xyz" hence the boolean above output true.
+		
+Also, a total of 4 new strings are created and 10 more are generated. Firstly, at line 12, the aString object is created. Then at lines, 16, 20 and 23, the keyword "new" creates new String objects. Lastly, at lines 13, 21, 22, 23, 24, 25, new strings are generated at each concatenation.

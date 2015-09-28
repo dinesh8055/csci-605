@@ -1,0 +1,79 @@
+import java.util.Scanner;
+import java.io.File;
+public class Palindrome
+{
+	public static void main( String[] args )
+	{
+		try
+		{
+			File file = new File("test.txt");
+			Scanner sc  = new Scanner((file));
+            while ( sc.hasNext() )  
+            {
+            	String line = sc.nextLine();
+                System.out.println(line);// your code goes here
+                findPalindrome(line, sc);     //this must have a nested for loop           
+            }
+            sc.close();  
+        }
+		catch ( Exception e )
+		{
+				System.err.println(e);
+        }
+	}  
+	
+	/*
+	 * The following method checks whether the string is palindrome or not
+	 * 
+	 * The string is read character by character. 
+	 * Then the string read forward is compared with the next characters when read backward.
+	 * The above condition returns true in the case of a palindrome.
+	 * 
+	 */
+	public static void isPalindrome(String line, Scanner sc)
+	{
+		int startIndex=0;
+		int endIndex=line.length()-1;
+		String reversedPart="";
+		int lineLength=line.length();
+		while(startIndex<line.length())
+		{
+			System.out.println("iteration number "+startIndex);
+		    String startLetter=line.substring(0, ++startIndex);
+			String endLetter=line.substring(endIndex,line.length());
+			reversedPart = reverse(endIndex,endLetter,lineLength);
+			System.out.println("Comparing "+startLetter +" and "+reversedPart);
+			System.out.println("btw endLetter is now "+endLetter);
+			if(startLetter.equalsIgnoreCase(reversedPart))
+			{
+				System.out.println("Equal");
+			}
+			else
+			{
+				System.out.println("Not Equal");
+			}
+			//startIndex++;
+			endIndex--;
+		}		
+	}
+	public static void findPalindrome(String line, Scanner sc)
+	{
+		for(int i=0; i<line.length(); i++)
+		{
+			for(int j=0; j<line.length(); j++)
+			{
+				isPalindrome();
+			}
+		}
+	}
+	/*public static String reverse(int endIndex, String endLetter, int lineLength)
+	{
+		String reversedPart="";
+		for(int i=lineLength; i>endIndex; i--)
+		{
+			reversedPart+=endLetter.charAt(0);
+		}
+		System.out.println("reversed part is "+reversedPart);
+		return reversedPart;
+	}*/
+}
